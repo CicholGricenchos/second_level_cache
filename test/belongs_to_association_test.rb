@@ -23,4 +23,11 @@ class BelongsToAssociationTest < ActiveSupport::TestCase
     assert_equal @user, book.user
     # assert_not_nil User.read_second_level_cache(@user.id)
   end
+
+  def test_has_many_with_scope
+    @user.books.create(read: false)
+    favorite_book = @user.books.create(read: true)
+    assert_equal @user.favorite_book, favorite_book
+    assert_equal User.find(@user.id).favorite_book, favorite_book
+  end
 end

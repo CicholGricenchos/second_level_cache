@@ -3,6 +3,7 @@ ActiveRecord::Base.connection.create_table(:books, :force => true) do |t|
   t.string  :title
   t.string  :body
   t.integer :user_id
+  t.boolean :read
   t.integer :images_count, :default => 0
 end
 

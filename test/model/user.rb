@@ -35,6 +35,7 @@ class User < ActiveRecord::Base
   has_many :namespaces
   has_one  :namespace, -> { where(kind: nil) }
   has_many :books
+  has_one  :favorite_book, -> { where('read = 1') }, class_name: 'Book'
   has_many :images, :as => :imagable
 end
 
